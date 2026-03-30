@@ -19,7 +19,7 @@ No requiere backend para su funcionamiento.
 
 ## 🛠 Tecnologías
 
-- ⚛️ React (Vite)
+- ⚛️ React (Create React App)
 - 🎨 Bootstrap
 - 💾 localStorage
 - 🔀 React Router DOM
@@ -45,7 +45,7 @@ npm install
 Ejecutar el proyecto:
 
 ```bash
-npm run dev
+npm start
 ```
 
 Abrir en navegador:
@@ -53,6 +53,13 @@ Abrir en navegador:
 ```
 http://localhost:5173
 ```
+
+---
+
+## 📌 Notas
+
+Este proyecto utiliza una base inicial provista por el CoWork de ID For IDeas,
+sobre la cual se implementan las tareas del roadmap.
 
 ---
 
