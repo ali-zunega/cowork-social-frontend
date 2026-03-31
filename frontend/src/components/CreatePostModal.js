@@ -4,13 +4,17 @@ import "./CreatePostModal.css";
 
 const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
   const [content, setContent] = useState("");
+  const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!content.trim()) return;
+    if (!content.trim()) {
+      setError("El contenido no puede estar vacío");
+      return;
+    }
 
     const newPost = {
       id: Date.now().toString(),
@@ -23,6 +27,7 @@ const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
 
     onAddPost(newPost);
     setContent("");
+    setError(null);
     onClose();
   };
 
@@ -54,6 +59,7 @@ const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
               }}
             />
           </div>
+          {error && <p className="modal-error">{error}</p>}
 
           <div className="modal-actions">
             <button

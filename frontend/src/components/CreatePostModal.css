@@ -47,3 +47,9 @@ textarea {
     justify-content: flex-end;
     gap: 10px;
 }
+
+.modal-error {
+    color: #ff4d4f;
+    margin: 10px;
+    font-weight: 600;
+}
