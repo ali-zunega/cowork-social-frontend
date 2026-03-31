@@ -4,17 +4,13 @@ import "./CreatePostModal.css";
 
 const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
   const [content, setContent] = useState("");
-  const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!content.trim()) {
-      setError("El contenido no puede estar vacío");
-      return;
-    }
+    if (!content.trim()) return;
 
     const newPost = {
       id: Date.now().toString(),
@@ -27,41 +23,50 @@ const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
 
     onAddPost(newPost);
     setContent("");
-    setError(null);
     onClose();
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <h2>Crear Post</h2>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h3>Nueva Publicación</h3>
+          <button className="close-btn fw-bold" onClick={onClose}>
+            &times;
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="¿Qué estás pensando?"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
           />
+          {/*  contador de caracteres  */}
+          <span className="char-count">{content.length} caracteres</span>
 
           {/* Preview */}
-
-          <div className="preview">
-            <h4>Preview</h4>
-            <PostCard
-              isPreview={true}
-              post={{
-                id: "preview",
-                author: { name: "Anónimo", avatar: null },
-                content: content || "Tu publicación aparecerá aquí...",
-                createdAt: new Date().toISOString(),
-                likes: 0,
-                comments: 0,
-              }}
-            />
+          <div className="preview-container">
+            <span className="preview-label">Vista Previa del Post</span>
+            <div className="preview-scale-wrapper">
+              <PostCard
+                isPreview={true}
+                post={{
+                  id: "preview",
+                  author: { name: "Anónimo", avatar: null },
+                  content:
+                    content || "Aquí se verá tu increíble publicación...",
+                  createdAt: new Date().toISOString(),
+                  likes: 0,
+                  comments: 0,
+                }}
+              />
+            </div>
           </div>
-          {error && <p className="modal-error">{error}</p>}
 
-          <div className="modal-actions">
+          <div className="modal-footer">
             <button
               type="button"
               onClick={onClose}
@@ -69,7 +74,11 @@ const CreatePostModal = ({ isOpen, onClose, onAddPost }) => {
             >
               Cancelar
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!content.trim()}
+            >
               Publicar
             </button>
           </div>

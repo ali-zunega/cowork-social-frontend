@@ -1,6 +1,9 @@
 .post-card {
   margin-bottom: 20px;
   background: var(--card-bg);
+  width: 100%;
+  border-radius: 8px;
+
 }
 
 .post-header {
