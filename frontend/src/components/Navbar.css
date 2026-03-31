@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   height: 60px;
-  background: white;
+  background-color: var(--card-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
@@ -36,7 +36,7 @@
 
 .navbar-menu a {
   text-decoration: none;
-  color: #1c1e21;
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.2s;
 }
@@ -45,15 +45,69 @@
   color: #1877f2;
 }
 
+/* Theme switch */
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Ocultar checkbox */
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Círculo */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Estado ON */
+.theme-switch input:checked+.slider {
+  background-color: #1877f2;
+}
+
+.theme-switch input:checked+.slider::before {
+  transform: translateX(26px);
+}
+
 @media (max-width: 768px) {
   .navbar {
     height: 56px;
   }
-  
+
   .navbar-brand h2 {
     font-size: 20px;
   }
-  
+
   .navbar-menu {
     gap: 15px;
     font-size: 14px;
