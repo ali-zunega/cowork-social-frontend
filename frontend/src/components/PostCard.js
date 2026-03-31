@@ -1,9 +1,9 @@
-import React from 'react';
-import './PostCard.css';
+import React from "react";
+import "./PostCard.css";
 
 /**
  * Componente de tarjeta para mostrar publicaciones
- * 
+ *
  * TODO: FE-02 - Completar este componente con:
  * - Avatar del usuario
  * - Fecha de publicación
@@ -11,39 +11,44 @@ import './PostCard.css';
  * - Contador de comentarios
  * - Preview de comentarios
  */
-const PostCard = ({ post }) => {
+const PostCard = ({ post, isPreview = false }) => {
   return (
     <div className="post-card card">
       <div className="post-header">
         <div className="post-author">
           <div className="author-avatar">
             {/* TODO: Agregar imagen de perfil */}
-            <span>{post?.author?.name?.charAt(0) || 'U'}</span>
+            <span>{post?.author?.name?.charAt(0) || "A"}</span>
           </div>
           <div className="author-info">
-            <h4>{post?.author?.name || 'Usuario'}</h4>
+            <h4>{post?.author?.name || "Anónimo"}</h4>
             <span className="post-date">
-              {post?.createdAt ? new Date(post.createdAt).toLocaleDateString('es-ES') : 'Hoy'}
+              {post?.createdAt
+                ? new Date(post.createdAt).toLocaleDateString("es-ES")
+                : "Hoy"}
             </span>
           </div>
         </div>
       </div>
 
       <div className="post-content">
-        <p>{post?.content || 'Esta es una publicación de ejemplo. ¡Bienvenido a CoWork Social!'}</p>
+        <p>
+          {post?.content ||
+            "Esta es una publicación de ejemplo. ¡Bienvenido a CoWork Social!"}
+        </p>
         {post?.image && (
           <img src={post.image} alt="Post" className="post-image" />
         )}
       </div>
 
       <div className="post-actions">
-        <button className="action-btn">
+        <button className="action-btn" disabled={isPreview}>
           👍 Me gusta {post?.likes || 0}
         </button>
-        <button className="action-btn">
+        <button className="action-btn" disabled={isPreview}>
           💬 Comentar {post?.comments || 0}
         </button>
-        <button className="action-btn">
+        <button className="action-btn" disabled={isPreview}>
           📤 Compartir
         </button>
       </div>
