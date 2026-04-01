@@ -1,6 +1,6 @@
 # 🚀 CoWork Social - Frontend
 
-Proyecto desarrollado como parte del Co-Work de ID For Ideas.
+Proyecto desarrollado como parte del CoWork de ID For Ideas.
 El objetivo es construir una aplicación social utilizando React, trabajando con un roadmap de tareas progresivas.
 
 ---
@@ -20,10 +20,10 @@ No requiere backend para su funcionamiento.
 ## 🛠 Tecnologías
 
 - ⚛️ React (Create React App)
-- 🎨 Bootstrap
+- ⚡️ JavaScript (ES6+)
+- 🎨 Custom CSS (with theming support)
 - 💾 localStorage
 - 🔀 React Router DOM
-- 📦 Axios
 
 ---
 
@@ -32,8 +32,8 @@ No requiere backend para su funcionamiento.
 Clonar el repositorio:
 
 ```bash
-git clone <tu-repo>
-cd <tu-repo>/frontend
+git clone https://github.com/ali-zunega/cowork-social-frontend.git
+cd cowork-social-frontend/frontend
 ```
 
 Instalar dependencias:
@@ -113,8 +113,8 @@ frontend/
 
 ## 🔗 Links (a completar)
 
-- 🌐 Deploy: (pendiente)
-- 💼 LinkedIn Post: (pendiente)
+- 🌐 Deploy:[CoWork-Social](https://cowork-social-frontend.vercel.app/)
+- 💼 LinkedIn Post: [LinkedIn](https://www.linkedin.com/posts/alicialzunegamza_cowork-idforideas-cowork-activity-7444944095271137280-aMnp?utm_source=share&utm_medium=member_desktop&rcm=ACoAACoyl28BYty9Q8h4ZxholbAtRzs6L_henuk)
 
 ---
 
