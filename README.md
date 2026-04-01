@@ -67,7 +67,7 @@ sobre la cual se implementan las tareas del roadmap.
 
 ### Progreso de tareas:
 
-- [ ] FE-01: Tema Oscuro/Claro
+- [x] FE-01: Tema Oscuro/Claro
 - [ ] FE-02: Modal Crear Post
 - [ ] FE-03: Buscador de Usuarios
 - [ ] FE-04: Editar Perfil de Usuario
