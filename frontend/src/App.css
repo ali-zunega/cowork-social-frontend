@@ -15,10 +15,10 @@
 
   --btn-secondary-text: #1c1e21;
   --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
+  --color-primary-hover: #433bcb;
 
   --btn-secondary-bg: transparent;
-  --btn-secondary-hover: rgba(128, 128, 128, 0.1);
+  --btn-secondary-hover: rgb(136, 133, 133);
 
   --btn-secondary-border: var(--border-color);
   --text-muted: #5e503f;
