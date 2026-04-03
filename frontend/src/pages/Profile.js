@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import './Profile.css';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getUser } from "../utils/getUser";
+import "./Profile.css";
 
 /**
  * Página de perfil de usuario
- * 
+ *
  * TODO: FE-03 - Implementar:
  * - Modo edición del perfil
  * - Upload de foto de perfil
@@ -14,18 +15,9 @@ import './Profile.css';
  */
 const Profile = () => {
   const { userId } = useParams();
-  const [isEditing, setIsEditing] = useState(false);
-  
-  // Mock data - vendría de la API
-  const mockUser = {
-    name: 'Ana Martínez',
-    bio: 'Full Stack Developer apasionada por tecnología y código abierto. Me encanta aprender y compartir conocimientos.',
-    location: 'Madrid, España',
-    skills: ['React', 'Node.js', 'Python', 'MongoDB'],
-    followers: 234,
-    following: 189,
-    posts: 45
-  };
+
+  const user = getUser();
+  const navigate = useNavigate();
 
   return (
     <div className="profile-page">
@@ -36,14 +28,18 @@ const Profile = () => {
             <div className="profile-cover"></div>
             <div className="profile-avatar-section">
               <div className="profile-avatar">
-                {mockUser.name.charAt(0)}
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.name} />
+                ) : (
+                  <span>{user.name.charAt(0)}</span>
+                )}
               </div>
-              {userId === 'me' && (
-                <button 
+              {userId === "me" && (
+                <button
                   className="btn btn-secondary"
-                  onClick={() => setIsEditing(!isEditing)}
+                  onClick={() => navigate("/profile/edit")}
                 >
-                  {isEditing ? '💾 Guardar' : '✏️ Editar Perfil'}
+                  ✏️ Editar Perfil
                 </button>
               )}
             </div>
@@ -51,22 +47,22 @@ const Profile = () => {
 
           {/* Información del perfil */}
           <div className="profile-info card">
-            <h2>{mockUser.name}</h2>
-            <p className="profile-location">📍 {mockUser.location}</p>
-            <p className="profile-bio">{mockUser.bio}</p>
+            <h2>{user.name}</h2>
+            <p className="profile-location">📍 {user.location}</p>
+            <p className="profile-bio">{user.bio}</p>
 
             {/* Stats */}
             <div className="profile-stats">
               <div className="stat-item">
-                <strong>{mockUser.posts}</strong>
+                <strong>{user.posts || 0}</strong>
                 <span>Publicaciones</span>
               </div>
               <div className="stat-item">
-                <strong>{mockUser.followers}</strong>
+                <strong>{user.followers || 0}</strong>
                 <span>Seguidores</span>
               </div>
               <div className="stat-item">
-                <strong>{mockUser.following}</strong>
+                <strong>{user.following || 0}</strong>
                 <span>Siguiendo</span>
               </div>
             </div>
@@ -75,7 +71,7 @@ const Profile = () => {
             <div className="profile-skills">
               <h3>Habilidades</h3>
               <div className="skills-list">
-                {mockUser.skills.map((skill, index) => (
+                {user.skills?.map((skill, index) => (
                   <span key={index} className="skill-tag">
                     {skill}
                   </span>
@@ -87,7 +83,9 @@ const Profile = () => {
           {/* Publicaciones del usuario */}
           <div className="profile-posts">
             <h3>Publicaciones</h3>
-            <p className="coming-soon">Las publicaciones del usuario se mostrarán aquí...</p>
+            <p className="coming-soon">
+              Las publicaciones del usuario se mostrarán aquí...
+            </p>
           </div>
         </div>
       </div>
