@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { getUser } from "../utils/getUser";
 import "./Profile.css";
 
 /**
@@ -15,22 +16,8 @@ import "./Profile.css";
 const Profile = () => {
   const { userId } = useParams();
 
+  const user = getUser();
   const navigate = useNavigate();
-
-  // Mock data - vendría de la API
-  const mockUser = {
-    name: "Ana Martínez",
-    avatar: "",
-    bio: "Full Stack Developer apasionada por tecnología y código abierto. Me encanta aprender y compartir conocimientos.",
-    location: "Madrid, España",
-    skills: ["React", "Node.js", "Python", "MongoDB"],
-    followers: 234,
-    following: 189,
-    posts: 45,
-  };
-
-  const savedUser = JSON.parse(localStorage.getItem("user"));
-  const user = savedUser || mockUser;
 
   return (
     <div className="profile-page">
@@ -50,7 +37,7 @@ const Profile = () => {
               {userId === "me" && (
                 <button
                   className="btn btn-secondary"
-                  onClick={() => navigate("/profile/edit", { state: { user } })}
+                  onClick={() => navigate("/profile/edit")}
                 >
                   ✏️ Editar Perfil
                 </button>
@@ -61,23 +48,21 @@ const Profile = () => {
           {/* Información del perfil */}
           <div className="profile-info card">
             <h2>{user.name}</h2>
-            <p className="profile-location">
-              📍 {user.location || "Sin ubicación"}
-            </p>
+            <p className="profile-location">📍 {user.location}</p>
             <p className="profile-bio">{user.bio}</p>
 
             {/* Stats */}
             <div className="profile-stats">
               <div className="stat-item">
-                <strong>{user.posts}</strong>
+                <strong>{user.posts || 0}</strong>
                 <span>Publicaciones</span>
               </div>
               <div className="stat-item">
-                <strong>{user.followers}</strong>
+                <strong>{user.followers || 0}</strong>
                 <span>Seguidores</span>
               </div>
               <div className="stat-item">
-                <strong>{user.following}</strong>
+                <strong>{user.following || 0}</strong>
                 <span>Siguiendo</span>
               </div>
             </div>

@@ -1,40 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { getUser } from "../utils/getUser";
 import "./ProfileEdit.css";
-
-// mockData para user
-const mockUser = {
-  name: "Ana Martínez",
-  bio: "Full Stack Developer apasionada por tecnología y código abierto.",
-  skills: ["React", "Node.js", "Python"],
-  avatar: "",
-};
 
 const ProfileEdit = () => {
   const [success, setSuccess] = useState(false);
-  const location = useLocation();
-  const userFromState = location.state?.user;
+  const routerLocation = useLocation();
+  const userFromState = routerLocation.state?.user;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
+    location: "",
     bio: "",
     skills: "",
     avatar: "",
   });
 
   const [error, setError] = useState("");
+
+  const user = React.useMemo(() => {
+    return getUser(userFromState);
+  }, [userFromState]);
+
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-
-    const user = userFromState || savedUser || mockUser;
-
     setFormData({
       name: user.name || "",
+      location: user.location || "Sin ubicación",
       bio: user.bio || "",
       avatar: user.avatar || "",
       skills: user.skills ? user.skills.join(", ") : "",
     });
-  }, [userFromState]);
+  }, [user]);
 
   const handleChange = (e) => {
     setFormData({
@@ -54,6 +50,7 @@ const ProfileEdit = () => {
     const userToSave = {
       id: "user-1",
       name: formData.name,
+      location: formData.location,
       bio: formData.bio,
       avatar: formData.avatar,
       skills: formData.skills
@@ -89,6 +86,15 @@ const ProfileEdit = () => {
             onChange={handleChange}
           />
           {error && <p className="form-error">{error}</p>}
+        </div>
+        <div className="form-group">
+          <label>Ubicación</label>
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="form-group">
