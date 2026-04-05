@@ -13,6 +13,23 @@ import "./Feed.css";
  * TODO: FE-04 - Implementar scroll infinito
  * TODO: FE-06 - Agregar modal para crear publicaciones
  */
+const initInteractions = (posts) => {
+  const existing = localStorage.getItem("post_interactions");
+  if (existing) return;
+
+  const initialData = {};
+
+  posts.forEach((post) => {
+    initialData[post.id] = {
+      postId: post.id,
+      likes: post.likes || 0,
+      likedByMe: false,
+      comments: [],
+    };
+  });
+
+  localStorage.setItem("post_interactions", JSON.stringify(initialData));
+};
 
 const Feed = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,11 +38,18 @@ const Feed = () => {
   useEffect(() => {
     const savedPosts = JSON.parse(localStorage.getItem("posts"));
 
+    let initialPosts;
+
     if (savedPosts && savedPosts.length > 0) {
-      setPosts(savedPosts);
+      initialPosts = savedPosts;
     } else {
-      setPosts(mockPosts);
+      initialPosts = mockPosts;
+      localStorage.setItem("posts", JSON.stringify(mockPosts));
     }
+
+    setPosts(initialPosts);
+
+    initInteractions(initialPosts);
   }, []);
 
   const handleAddPost = (newPost) => {
