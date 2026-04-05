@@ -51,7 +51,7 @@ npm start
 Abrir en navegador:
 
 ```
-http://localhost:5173
+http://localhost:3000
 ```
 
 ---
@@ -71,7 +71,7 @@ sobre la cual se implementan las tareas del roadmap.
 - [x] FE-02: Modal Crear Post
 - [x] FE-03: Buscador de Usuarios
 - [x] FE-04: Editar Perfil de Usuario
-- [ ] FE-05: Interacciones en Post (Like & Comentario)
+- [x] FE-05: Interacciones en Post (Like & Comentario)
 - [ ] FE-06: Centro de Notificaciones
 - [ ] FE-07: Sistema Seguir/Dejar de seguir Usuario
 - [ ] FE-08: Responsive Design y Mobile Optimization
