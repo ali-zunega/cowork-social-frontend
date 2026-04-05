@@ -1,23 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PostCard.css";
+import {
+  getPostInteraction,
+  updatePostInteraction,
+} from "../utils/interactions";
 
-/**
- * Componente de tarjeta para mostrar publicaciones
- *
- * TODO: FE-02 - Completar este componente con:
- * - Avatar del usuario
- * - Fecha de publicación
- * - Botones de reacciones (like, love, celebrar)
- * - Contador de comentarios
- * - Preview de comentarios
- */
 const PostCard = ({ post, isPreview = false }) => {
+  const [interaction, setInteraction] = useState(null);
+  const [showComments, setShowComments] = useState(false);
+  const [commentText, setCommentText] = useState("");
+
+  useEffect(() => {
+    if (!post?.id) return;
+    const data = getPostInteraction(post.id);
+    setInteraction(data);
+  }, [post?.id]);
+
+  if (!interaction) return null;
+
+  const handleLike = () => {
+    if (isPreview) return;
+
+    const updated = {
+      ...interaction,
+      likedByMe: !interaction.likedByMe,
+      likes: interaction.likedByMe
+        ? interaction.likes - 1
+        : interaction.likes + 1,
+    };
+
+    setInteraction(updated);
+    updatePostInteraction(post.id, updated);
+  };
+
+  const handleAddComment = () => {
+    if (!commentText.trim()) return;
+
+    const newComment = {
+      id: Date.now().toString(),
+      author: "Tú",
+      text: commentText,
+      date: new Date().toISOString(),
+    };
+
+    const updated = {
+      ...interaction,
+      comments: [...interaction.comments, newComment],
+    };
+
+    setInteraction(updated);
+    updatePostInteraction(post.id, updated);
+    setCommentText("");
+  };
+  const formatTimeAgo = (date) => {
+    const diff = Math.floor((new Date() - new Date(date)) / 1000);
+
+    if (diff < 60) return "ahora";
+    if (diff < 3600) return `hace ${Math.floor(diff / 60)} min`;
+    if (diff < 86400) return `hace ${Math.floor(diff / 3600)} h`;
+
+    return new Date(date).toLocaleDateString("es-AR");
+  };
+
   return (
     <div className="post-card card">
+      {/* HEADER ORIGINAL */}
       <div className="post-header">
         <div className="post-author">
           <div className="author-avatar">
-            {/* TODO: Agregar imagen de perfil */}
             <span>{post?.author?.name?.charAt(0) || "A"}</span>
           </div>
           <div className="author-info">
@@ -31,27 +81,75 @@ const PostCard = ({ post, isPreview = false }) => {
         </div>
       </div>
 
+      {/* CONTENIDO ORIGINAL */}
       <div className="post-content">
         <p>
           {post?.content ||
             "Esta es una publicación de ejemplo. ¡Bienvenido a CoWork Social!"}
         </p>
+
         {post?.image && (
           <img src={post.image} alt="Post" className="post-image" />
         )}
       </div>
 
+      {/* ACCIONES MEJORADAS */}
       <div className="post-actions">
-        <button className="action-btn" disabled={isPreview}>
-          👍 Me gusta {post?.likes || 0}
+        <button className="action-btn" onClick={handleLike}>
+          {interaction.likedByMe ? "💙" : "🤍"} {interaction.likes}
         </button>
-        <button className="action-btn" disabled={isPreview}>
-          💬 Comentar {post?.comments || 0}
+
+        <button
+          className="action-btn"
+          onClick={() => setShowComments(!showComments)}
+        >
+          💬 {interaction.comments.length}
         </button>
-        <button className="action-btn" disabled={isPreview}>
+
+        <button className="action-btn" disabled>
           📤 Compartir
         </button>
       </div>
+
+      {/* COMENTARIOS */}
+      {showComments && (
+        <div className="comments-section">
+          <div className="comments-list">
+            {interaction.comments.map((c) => (
+              <div key={c.id} className="comment">
+                <div className="comment-avatar">
+                  <span>{c.author.charAt(0)}</span>
+                </div>
+
+                <div className="comment-body">
+                  <div className="comment-header">
+                    <strong>{c.author}</strong>
+                    <span className="comment-date">
+                      {formatTimeAgo(c.date)}
+                    </span>
+                  </div>
+
+                  <div className="comment-bubble">
+                    <p>{c.text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="comment-form">
+            <input
+              type="text"
+              placeholder="Escribí un comentario aquí..."
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+            />
+            <button className="btn btn-primary" onClick={handleAddComment}>
+              Enviar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
