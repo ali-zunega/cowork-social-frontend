@@ -13,8 +13,8 @@ const FollowersList = () => {
     const shuffled = [...mockUsers]
 
       .sort(() => 0.5 - Math.random())
-      // Tomamos 5 usuarios aleatorios del mockUsers
-      .slice(0, 5);
+      // Tomamos 6 usuarios aleatorios del mockUsers para mostrar
+      .slice(0, 6);
     return shuffled;
   }, []);
 
