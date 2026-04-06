@@ -11,6 +11,8 @@ import Feed from "./pages/Feed";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import ProfileEdit from "./pages/ProfileEdit";
+import FollowersList from "./pages/FollowersList";
+import FollowingList from "./pages/FollowingList";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -34,6 +36,8 @@ function App() {
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />
+            <Route path="/followers" element={<FollowersList />} />
+            <Route path="/following" element={<FollowingList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

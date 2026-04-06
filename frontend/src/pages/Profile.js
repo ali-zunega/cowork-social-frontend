@@ -1,6 +1,7 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUser } from "../utils/getUser";
+import FollowButton from "../components/FollowButton";
 import "./Profile.css";
 
 /**
@@ -19,6 +20,21 @@ const Profile = () => {
   const user = getUser();
   const navigate = useNavigate();
 
+  const [followingCount, setFollowingCount] = useState(user.following || 0);
+
+  useEffect(() => {
+    // Si es mi perfil, actualizamos el contador de "Siguiendo" con el localStorage real
+    if (userId === "me") {
+      const savedFollowing =
+        JSON.parse(localStorage.getItem("following")) || [];
+      setFollowingCount(savedFollowing.length);
+    }
+  }, [userId]);
+
+  const handleFollowChange = (isFollowing) => {
+    console.log(`User ${userId} following status: ${isFollowing}`);
+  };
+
   return (
     <div className="profile-page">
       <div className="container">
@@ -34,14 +50,21 @@ const Profile = () => {
                   <span>{user.name.charAt(0)}</span>
                 )}
               </div>
-              {userId === "me" && (
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => navigate("/profile/edit")}
-                >
-                  ✏️ Editar Perfil
-                </button>
-              )}
+              <div className="profile-actions">
+                {userId === "me" ? (
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => navigate("/profile/edit")}
+                  >
+                    ✏️ Editar Perfil
+                  </button>
+                ) : (
+                  <FollowButton
+                    userId={userId}
+                    onFollowChange={handleFollowChange}
+                  />
+                )}
+              </div>
             </div>
           </div>
 
@@ -51,20 +74,28 @@ const Profile = () => {
             <p className="profile-location">📍 {user.location}</p>
             <p className="profile-bio">{user.bio}</p>
 
-            {/* Stats */}
+            {/* Publicaciones */}
             <div className="profile-stats">
               <div className="stat-item">
                 <strong>{user.posts || 0}</strong>
                 <span>Publicaciones</span>
               </div>
-              <div className="stat-item">
-                <strong>{user.followers || 0}</strong>
-                <span>Seguidores</span>
-              </div>
-              <div className="stat-item">
-                <strong>{user.following || 0}</strong>
-                <span>Siguiendo</span>
-              </div>
+              {/* Seguidores */}
+              <Link to="/followers" className="stat-link">
+                <div className="stat-item">
+                  <strong>{user.followers || 0}</strong>
+                  <span>Seguidores</span>
+                </div>
+              </Link>
+              {/* Seguidos */}
+              <Link to="/following" className="stat-link">
+                <div className="stat-item">
+                  <strong>
+                    {userId === "me" ? followingCount : user.following}
+                  </strong>
+                  <span>Siguiendo</span>
+                </div>
+              </Link>
             </div>
 
             {/* Skills */}

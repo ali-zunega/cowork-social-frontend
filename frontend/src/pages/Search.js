@@ -56,14 +56,18 @@ const Search = () => {
       <div className="users-grid">
         {filteredUsers.map((user) => (
           <div key={user.id} className="card user-card">
-            <h3>{user.name}</h3>
-
-            <div className="user-skills">
-              {user.skills.map((skill) => (
-                <span key={skill} className="skill-badge">
-                  {skill}
-                </span>
-              ))}
+            <div className="user-info">
+              <div className="user-avatar-small">{user.name.charAt(0)}</div>
+              <div className="user-details">
+                <h3>{user.name}</h3>
+                <div className="user-skills">
+                  {user.skills.map((skill) => (
+                    <span key={skill} className="skill-badge">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         ))}
