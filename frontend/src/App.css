@@ -22,6 +22,9 @@
 
   --btn-secondary-border: var(--border-color);
   --text-muted: #5e503f;
+
+  --icon-color: #222;
+
 }
 
 /* Dark theme Variables */
@@ -43,6 +46,8 @@
   --btn-secondary-text: #ffffff;
   --btn-secondary-hover: rgba(255, 255, 255, 0.08);
   --text-muted: #dedbd2;
+
+  --icon-color: #fff;
 }
 
 * {
@@ -118,6 +123,45 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  padding: 8px;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+}
+
+.nav-icon svg {
+  font-size: 20px;
+  display: block;
+}
+
+.icon svg,
+.notification-bell svg {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-with-icon:hover {
+  background-color: #433bcb;
+  color: white;
+
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FiMessageCircle, FiShare } from "react-icons/fi";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { formatTimeAgo } from "../utils/dateFormatter";
 import "./PostCard.css";
 import {
@@ -86,18 +88,25 @@ const PostCard = ({ post, isPreview = false }) => {
       {/* ACCIONES MEJORADAS */}
       <div className="post-actions">
         <button className="action-btn" onClick={handleLike}>
-          {interaction.likedByMe ? "💙" : "🤍"} {interaction.likes}
+          {interaction.likedByMe ? (
+            <AiFillHeart className="icon-liked" />
+          ) : (
+            <AiOutlineHeart />
+          )}
+          {interaction.likes}
         </button>
 
         <button
           className="action-btn"
           onClick={() => setShowComments(!showComments)}
         >
-          💬 {interaction.comments.length}
+          <FiMessageCircle />
+          {interaction.comments.length}
         </button>
 
         <button className="action-btn" disabled>
-          📤 Compartir
+          <FiShare />
+          Compartir
         </button>
       </div>
 

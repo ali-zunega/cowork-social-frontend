@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiEdit, FiMapPin } from "react-icons/fi";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUser } from "../utils/getUser";
 import FollowButton from "../components/FollowButton";
@@ -53,10 +54,11 @@ const Profile = () => {
               <div className="profile-actions">
                 {userId === "me" ? (
                   <button
-                    className="btn btn-secondary"
+                    className="btn btn-secondary btn-with-icon"
                     onClick={() => navigate("/profile/edit")}
                   >
-                    ✏️ Editar Perfil
+                    <FiEdit />
+                    <span>Editar Perfil</span>
                   </button>
                 ) : (
                   <FollowButton
@@ -71,7 +73,10 @@ const Profile = () => {
           {/* Información del perfil */}
           <div className="profile-info card">
             <h2>{user.name}</h2>
-            <p className="profile-location">📍 {user.location}</p>
+
+            <p className="profile-location">
+              <FiMapPin /> {user.location}
+            </p>
             <p className="profile-bio">{user.bio}</p>
 
             {/* Publicaciones */}

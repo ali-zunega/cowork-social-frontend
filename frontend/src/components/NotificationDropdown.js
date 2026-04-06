@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiBell } from "react-icons/fi";
 import { mockNotifications } from "../data/mockNotifications";
 import { formatTimeAgo } from "../utils/dateFormatter";
 import "./NotificationDropdown.css";
@@ -62,8 +63,8 @@ const NotificationDropdown = () => {
   return (
     <div className="notification-container">
       {/* Botón de la Campana */}
-      <button className="notification-bell" onClick={toggleDropdown}>
-        🔔
+      <button className="notification-bell nav-icon" onClick={toggleDropdown}>
+        <FiBell />
         {unreadCount > 0 && (
           <span className="notification-badge">{unreadCount}</span>
         )}
