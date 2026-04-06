@@ -1,4 +1,5 @@
 import React from "react";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import NotificationDropdown from "./NotificationDropdown";
@@ -20,7 +21,9 @@ const Navbar = () => {
         <div className="navbar-actions">
           {/* Toggle de modo */}
           <div className="theme-switch-wrapper">
-            <span className="icon">{theme === "light" ? "🌞" : "🌙"}</span>
+            <span className="icon">
+              {theme === "light" ? <FiSun /> : <FiMoon />}
+            </span>
 
             <label className="theme-switch">
               <input
