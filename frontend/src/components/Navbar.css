@@ -16,6 +16,12 @@
   align-items: center;
 }
 
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .navbar-brand {
   text-decoration: none;
   color: #1877f2;

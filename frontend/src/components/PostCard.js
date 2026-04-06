@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { formatTimeAgo } from "../utils/dateFormatter";
 import "./PostCard.css";
 import {
   getPostInteraction,
@@ -52,15 +53,6 @@ const PostCard = ({ post, isPreview = false }) => {
     updatePostInteraction(post.id, updated);
     setCommentText("");
   };
-  const formatTimeAgo = (date) => {
-    const diff = Math.floor((new Date() - new Date(date)) / 1000);
-
-    if (diff < 60) return "ahora";
-    if (diff < 3600) return `hace ${Math.floor(diff / 60)} min`;
-    if (diff < 86400) return `hace ${Math.floor(diff / 3600)} h`;
-
-    return new Date(date).toLocaleDateString("es-AR");
-  };
 
   return (
     <div className="post-card card">
@@ -73,9 +65,7 @@ const PostCard = ({ post, isPreview = false }) => {
           <div className="author-info">
             <h4>{post?.author?.name || "Anónimo"}</h4>
             <span className="post-date">
-              {post?.createdAt
-                ? new Date(post.createdAt).toLocaleDateString("es-ES")
-                : "Hoy"}
+              {post?.createdAt ? formatTimeAgo(post.createdAt) : "Ahora"}
             </span>
           </div>
         </div>
