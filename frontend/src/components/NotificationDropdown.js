@@ -63,7 +63,7 @@ const NotificationDropdown = () => {
   return (
     <div className="notification-container">
       {/* Botón de la Campana */}
-      <button className="notification-bell" onClick={toggleDropdown}>
+      <button className="notification-bell nav-icon" onClick={toggleDropdown}>
         <FiBell />
         {unreadCount > 0 && (
           <span className="notification-badge">{unreadCount}</span>

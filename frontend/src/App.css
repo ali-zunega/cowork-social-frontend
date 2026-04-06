@@ -129,6 +129,24 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--icon-color);
+  padding: 8px;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+}
+
+.nav-icon svg {
+  font-size: 20px;
+  display: block;
+}
+
+.icon svg,
+.notification-bell svg {
+  display: block;
   font-size: 1.4rem;
 }
 

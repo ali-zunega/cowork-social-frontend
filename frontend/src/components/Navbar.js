@@ -21,9 +21,9 @@ const Navbar = () => {
         <div className="navbar-actions">
           {/* Toggle de modo */}
           <div className="theme-switch-wrapper">
-            <span className="icon">
+            <p className="icon nav-icon ">
               {theme === "light" ? <FiSun /> : <FiMoon />}
-            </span>
+            </p>
 
             <label className="theme-switch">
               <input
