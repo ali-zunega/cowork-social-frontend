@@ -72,7 +72,7 @@ sobre la cual se implementan las tareas del roadmap.
 - [x] FE-03: Buscador de Usuarios
 - [x] FE-04: Editar Perfil de Usuario
 - [x] FE-05: Interacciones en Post (Like & Comentario)
-- [ ] FE-06: Centro de Notificaciones
+- [x] FE-06: Centro de Notificaciones
 - [ ] FE-07: Sistema Seguir/Dejar de seguir Usuario
 - [ ] FE-08: Responsive Design y Mobile Optimization
 - [ ] FE-09: Página de Configuración de Usuario
