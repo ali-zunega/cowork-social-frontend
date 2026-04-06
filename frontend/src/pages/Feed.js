@@ -1,4 +1,5 @@
 import React from "react";
+import { FiPlusSquare } from "react-icons/fi";
 import { mockPosts } from "../data/mockPosts";
 import CreatePostModal from "../components/CreatePostModal";
 import PostCard from "../components/PostCard";
@@ -65,10 +66,11 @@ const Feed = () => {
           <div className="feed-header">
             <h2>Feed de Publicaciones</h2>
             <button
-              className="btn btn-primary"
+              className="btn btn-primary btn-with-icon"
               onClick={() => setIsModalOpen(true)}
             >
-              ✏️ Nueva Publicación
+              <FiPlusSquare />
+              <span>Nueva Publicación</span>
             </button>
           </div>
           {/* mapero de posts */}
