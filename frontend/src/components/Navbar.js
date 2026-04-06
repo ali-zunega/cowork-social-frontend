@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
+import NotificationDropdown from "./NotificationDropdown";
 import "./Navbar.css";
 
 /**
@@ -15,18 +16,24 @@ const Navbar = () => {
         <Link to="/" className="navbar-brand">
           <h2>CoWork Social</h2>
         </Link>
-        <div className="theme-switch-wrapper">
-          <span className="icon">{theme === "light" ? "🌞" : "🌙"}</span>
+        {/* Contenedor de elementos de accion */}
+        <div className="navbar-actions">
+          {/* Toggle de modo */}
+          <div className="theme-switch-wrapper">
+            <span className="icon">{theme === "light" ? "🌞" : "🌙"}</span>
 
-          <label className="theme-switch">
-            <input
-              type="checkbox"
-              onChange={toggleTheme}
-              checked={theme === "dark"}
-              aria-label="Toggle dark mode"
-            />
-            <div className="slider round"></div>
-          </label>
+            <label className="theme-switch">
+              <input
+                type="checkbox"
+                onChange={toggleTheme}
+                checked={theme === "dark"}
+                aria-label="Toggle dark mode"
+              />
+              <div className="slider round"></div>
+            </label>
+          </div>
+          {/* Componente de Notificaciones */}
+          <NotificationDropdown />
         </div>
 
         <ul className="navbar-menu">

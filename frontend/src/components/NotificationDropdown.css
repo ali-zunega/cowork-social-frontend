@@ -1,0 +1,103 @@
+.notification-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notification-bell {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-bell:hover {
+    background-color: var(--hover-bg);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #ef4444;
+    /* Rojo Bootstrap para alertas */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 2px solid var(--card-bg);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    max-height: 400px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--overlay-bg);
+    margin-top: 10px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.notification-dropdown h3 {
+    padding: 15px;
+    margin: 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.notification-item.unread {
+    background-color: rgba(99, 102, 241, 0.1);
+    /* Tinte de tu color primario */
+    border-left: 3px solid var(--color-primary);
+}
+
+.notification-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.notification-item small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.no-notifications {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+}

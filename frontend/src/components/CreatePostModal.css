@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 20px;
+    padding: 16px;
     width: 100%;
     height: 100%;
     background: var(--overlay-bg);
@@ -103,7 +103,7 @@ span.preview-label {
     }
 
     to {
-        opacity: 1;
+        opacity: .99;
         transform: translateY(0);
     }
 }
