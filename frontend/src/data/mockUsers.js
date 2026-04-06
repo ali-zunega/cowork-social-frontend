@@ -22,7 +22,7 @@ export const mockUsers = [
   {
     id: 5,
     name: "Sofía Torres",
-    skills: ["React", "CSS"],
+    skills: ["React", "CSS", "Tailwind"],
   },
   {
     id: 6,
@@ -42,7 +42,7 @@ export const mockUsers = [
   {
     id: 9,
     name: "Lucía Herrera",
-    skills: ["HTML", "CSS"],
+    skills: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: 10,

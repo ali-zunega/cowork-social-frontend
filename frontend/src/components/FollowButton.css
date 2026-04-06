@@ -1,0 +1,29 @@
+.follow-btn {
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.follow-btn.btn-secondary {
+    background-color: var(--btn-secondary-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+
+.follow-btn.btn-secondary:hover {
+    color: transparent;
+    position: relative;
+}
+
+.follow-btn.btn-secondary:hover::after {
+    content: "Dejar de seguir";
+
+    color: #ef4444;
+    position: absolute;
+}
