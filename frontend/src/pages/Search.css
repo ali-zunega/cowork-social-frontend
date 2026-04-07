@@ -1,100 +1,199 @@
+/* Estilos Mobile First */
+
+.search-container {
+    padding: 16px;
+    width: 100%;
+}
+
+.search-title {
+    padding-top: 20px;
+}
+
 .search-input {
     width: 100%;
-    max-width: 500px;
-    padding: 10px 12px;
-    margin: 20px 0;
+    font-size: 16px;
+    margin: 10px 0 20px 0;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     background: var(--card-bg);
     color: var(--text-primary);
     outline: none;
-    transition: border 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding-left: 40px !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.skill-badge-more {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    align-self: center;
 }
 
 .search-input:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-.user-details h3 {
-    margin-bottom: 5px;
-    color: var(--text-primary);
-}
-
-.users-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-    padding-top: 10px;
-}
-
-.user-card h3 {
-    margin-bottom: 10px;
-
-}
-
-.user-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
     background: var(--card-bg);
-    color: var(--text-primary);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
-.user-info {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-grow: 1;
+.search-input-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 20px;
 }
 
-.user-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.search-icon-inside {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
 }
 
+/* Filtros de Skills */
 .skills-filter {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 10px 0;
+    gap: 10px;
+    margin: 15px 0 25px;
+    justify-content: center;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
 }
 
-.user-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+.skills-filter.collapsed {
+    max-height: 90px;
+    /* Suficiente para ~2 filas de botones */
 }
 
-.skill-badge {
-    background: var(--background-secondary);
-    color: var(--text-muted);
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 0.75rem;
+.skills-filter::-webkit-scrollbar {
+    display: none;
 }
 
 .skills-filter button {
-    padding: 8px 12px;
-    border-radius: 19px;
+    padding: 8px 16px;
+    border-radius: 20px;
     border: 1px solid var(--border-color);
-    background: transparent;
+    background: var(--card-bg);
     color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.skills-filter button:hover {
-    background: var(--background-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
 }
 
 .skills-filter button.active {
     background: var(--color-primary);
     color: white;
     border-color: var(--color-primary);
+}
+
+.expand-filters-btn {
+    display: block;
+    margin: -10px auto 20px;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Grid de Usuarios */
+.users-grid {
+    display: grid;
+    /* Base: 1 columna */
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 30px;
+}
+
+.user-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.user-details h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.user-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.skill-badge {
+    background: var(--bg-body);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+}
+
+/* estilo intermedio para evitar el salto */
+
+@media screen and (min-device-width: 468px) and (max-device-width: 649px) {
+    .users-grid {
+        grid-template-columns: 1fr;
+        width: 80%;
+        margin: auto;
+        gap: 10px;
+    }
+}
+
+/* Estilos Tablet / Desktop */
+@media (min-width: 768px) {
+    .search-title {
+        padding-top: 0px;
+    }
+
+    .users-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .skills-filter {
+        flex-wrap: wrap;
+        overflow-x: visible;
+    }
+
+    .search-input {
+        max-width: 500px;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .user-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+    }
+}
+
+@media (min-width: 1024px) {
+    .users-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }

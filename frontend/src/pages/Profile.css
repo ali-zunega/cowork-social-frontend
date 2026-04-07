@@ -1,51 +1,54 @@
+/* Estilo Mobile First */
+
 .profile-page {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - var(--nav-height));
   padding-bottom: 40px;
 }
 
 .profile-container {
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
 }
 
 .profile-header {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
 }
 
 .profile-cover {
-  height: 300px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 0 0 12px 12px;
+  height: 180px;
+  background: var(--hero-gradient);
+  border-radius: 0;
 }
 
 .profile-avatar-section {
   position: absolute;
-  bottom: -60px;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  width: 100%;
 }
 
 .profile-avatar {
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: var(--bg-body);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border: 3px solid var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 3px solid var(--color-primary-hover);
+  background-color: var(--bg-body);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: bold;
-  color: #667eea;
-  object-fit: cover;
-
+  color: var(--color-primary);
 }
 
 .profile-avatar img {
@@ -56,113 +59,130 @@
 
 .profile-info {
   text-align: center;
-  padding: 30px;
+  padding: 20px 16px;
+  margin-top: 10px;
 }
 
 .profile-info h2 {
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
   color: var(--text-primary);
 }
 
 .profile-location {
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
 }
 
 .profile-bio {
   color: var(--text-primary);
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 30px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
 }
 
+/* STATS */
 .profile-stats {
   display: flex;
-  justify-content: center;
-  gap: 50px;
-  padding: 30px 0;
+  justify-content: space-around;
+  padding: 20px 0;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-link {
+  text-decoration: none;
+  text-align: center;
 }
 
 .stat-item strong {
-  font-size: 24px;
+  font-size: 20px;
   color: var(--text-primary);
 }
 
 .stat-item span {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+/* SKILLS */
+.profile-skills {
+  padding: 0 16px;
 }
 
 .profile-skills h3 {
-  margin-bottom: 15px;
-  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .skills-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
 }
 
-.stat-link {
-  text-decoration: none;
-  color: #1877f2;
-}
-
-
 .skill-tag {
-  padding: 8px 16px;
+  padding: 6px 14px;
   background: var(--card-bg);
-  color: #1877f2;
-  border-radius: 20px;
-  font-size: 14px;
+  color: var(--color-primary);
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 500;
+  /* border: 1px solid var(--border-color); */
 }
 
 .profile-posts {
   margin-top: 30px;
-  padding: 30px;
+  padding: 24px 16px;
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
-.profile-posts h3 {
-  margin-bottom: 20px;
-  color: var(--text-primary);
-}
+/* Estilos Desktop / Tablets */
 
-.coming-soon {
-  text-align: center;
-  color: var(--text-secondary);
-  padding: 40px 0;
-}
+@media (min-width: 768px) {
+  .profile-header {
+    margin-bottom: 80px;
+  }
 
-@media (max-width: 768px) {
   .profile-cover {
-    height: 200px;
+    height: 300px;
+    border-radius: 0 0 12px 12px;
   }
 
   .profile-avatar {
     width: 140px;
     height: 140px;
+    font-size: 48px;
   }
 
+  .profile-info {
+    padding: 30px;
+  }
 
   .profile-stats {
-    gap: 20px;
+    gap: 50px;
+    justify-content: center;
   }
 
   .stat-item strong {
-    font-size: 20px;
+    font-size: 24px;
+  }
+
+  .profile-posts {
+    border-radius: 12px;
+    margin: 30px 16px 0;
   }
 }

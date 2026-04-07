@@ -35,8 +35,8 @@ const FollowersList = () => {
 
     setFollowers(filtered);
 
-    console.log("followersIds:", followersIds);
-    console.log("filtered:", filtered);
+    // console.log("followersIds:", followersIds);
+    // console.log("filtered:", filtered);
   }, []);
 
   return (

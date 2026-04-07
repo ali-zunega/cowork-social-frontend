@@ -1,100 +1,128 @@
+/* Estilos Mobile First */
+
 .home-page {
   min-height: 100vh;
 }
 
+/* HERO SECTION */
 .hero-section {
   background: var(--hero-gradient);
   color: white;
-  padding: 80px 0;
+  padding: 60px 16px;
   text-align: center;
 }
 
 .hero-content h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
 .hero-subtitle {
-  font-size: 20px;
-  margin-bottom: 40px;
+  font-size: 16px;
+  margin-bottom: 32px;
   opacity: 0.9;
+  line-height: 1.5;
 }
 
 .hero-actions {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
+/* FEATURES SECTION */
 .features-section {
-  padding: 80px 0;
+  padding: 60px 16px;
   background: var(--section-bg);
 }
 
 .features-section h2 {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 50px;
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: var(--text-primary);
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
 
 .feature-card {
   text-align: center;
+  padding: 0 10px;
 }
 
 .feature-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: block;
 }
 
 .feature-card h3 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--text-primary);
+  font-size: 20px;
 }
 
-.feature-card p {
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
+/* CTA SECTION */
 .cta-section {
-  padding: 80px 0;
+  padding: 60px 16px;
   background: var(--cta-bg);
   text-align: center;
 }
 
 .cta-section h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 16px;
 }
 
 .cta-section p {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--text-secondary);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
-@media (max-width: 768px) {
+/* Estilos Desktop / Tablets */
+
+@media (min-width: 768px) {
+
+  .hero-section,
+  .features-section,
+  .cta-section {
+    padding: 80px 0;
+  }
+
   .hero-content h1 {
-    font-size: 32px;
+    font-size: 48px;
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .hero-actions {
-    flex-direction: column;
-    padding: 0 20px;
+    flex-direction: row;
+    max-width: none;
+    justify-content: center;
   }
 
   .features-section h2,
   .cta-section h2 {
-    font-size: 28px;
+    font-size: 36px;
+  }
+
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
   }
 }

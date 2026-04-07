@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiCheckCircle } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../utils/getUser";
 import "./ProfileEdit.css";
@@ -89,7 +90,22 @@ const ProfileEdit = () => {
       <form onSubmit={handleSubmit} className="profile-form card">
         <h2>Editar perfil</h2>
         {success && (
-          <p className="form-success">Perfil actualizado correctamente ✅</p>
+          <div className="form-success-overlay">
+            <div className="form-success">
+              <div className="success-icon-wrapper">
+                <FiCheckCircle className="icon-success" />
+              </div>
+              <h3>¡Cambios guardados!</h3>
+              <p>Tu perfil se ha actualizado correctamente.</p>
+              <button
+                className="btn btn-primary"
+                onClick={() => setSuccess(false)} // O usar un navigate("/profile/me")
+                style={{ width: "100%" }}
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
         )}
 
         <div className="form-group">
