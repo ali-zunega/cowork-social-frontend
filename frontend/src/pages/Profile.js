@@ -19,6 +19,7 @@ const Profile = () => {
   const { userId } = useParams();
 
   const user = getUser();
+  console.log("usuario", user);
   const navigate = useNavigate();
 
   const [followingCount, setFollowingCount] = useState(user.following || 0);

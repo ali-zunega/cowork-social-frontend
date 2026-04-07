@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { mockUsers } from "../data/mockUsers";
 import FollowButton from "../components/FollowButton";
@@ -28,7 +29,7 @@ const FollowingList = () => {
     <div className="follow-list-page container main-content">
       <div className="list-header">
         <Link to="/profile/me" className="back-link">
-          ← Volver
+          <FaArrowLeft /> <span> Volver</span>
         </Link>
         <h1>Seguidos</h1>
         <p className="text-secondary">Gente a la que sigues</p>

@@ -29,6 +29,8 @@ const ProfileEdit = () => {
       bio: user.bio || "",
       avatar: user.avatar || "",
       skills: user.skills ? user.skills.join(", ") : "",
+      followers: user.followers || 0,
+      following: user.following || 0,
     });
   }, [user]);
 
@@ -46,6 +48,14 @@ const ProfileEdit = () => {
       setError("El nombre es obligatorio");
       return;
     }
+    // Inicializar sistema de follows si no existe
+    if (!localStorage.getItem("following")) {
+      localStorage.setItem("following", JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem("followers")) {
+      localStorage.setItem("followers", JSON.stringify([]));
+    }
 
     const userToSave = {
       id: "user-1",
@@ -57,7 +67,12 @@ const ProfileEdit = () => {
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean),
+      followers: 0,
+      following: 0,
     };
+
+    localStorage.setItem("followers", JSON.stringify([]));
+    localStorage.setItem("following", JSON.stringify([]));
 
     localStorage.setItem("user", JSON.stringify(userToSave));
 
