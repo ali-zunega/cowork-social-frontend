@@ -9,24 +9,37 @@
 
   /* Textos */
   --text-primary: #1c1e21;
-  --text-secondary: #65676b;
+  --text-secondary: #3d3c3c;
   --text-muted: #8d949e;
 
   /* Identidad */
-  --color-primary: #667eea;
-  --color-primary-hover: #5a6fd6;
   --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 
   /* Interactivos y Bordes */
-  --border-color: #e4e6eb;
+  --border-color: #353536;
   --hover-bg: #f2f3f5;
-  --icon-color: #4b4d50;
+  --icon-color: #444546;
 
-  /* Botones Secundarios */
-  --btn-secondary-bg: #ebedf0;
-  --btn-secondary-text: #2f3d52;
-  --btn-secondary-hover: #99bce9;
-  --btn-secondary-border: transparent;
+  /* PRIMARY */
+  --color-primary: #0d6efd;
+  --color-primary-hover: #0b5ed7;
+
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: var(--color-primary);
+
+  /* SECONDARY */
+  --color-secondary: #0e0e0e;
+  --color-secondary-hover: #9a9080;
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-secondary);
+  --btn-secondary-border: var(--color-secondary);
+
+  --btn-secondary-hover-bg: var(--color-secondary);
+  --btn-secondary-hover-text: #ffffff;
+
+
 }
 
 /* Modo Dark */
@@ -39,24 +52,35 @@
 
   /* Textos */
   --text-primary: #e4e6eb;
-  --text-secondary: #b0b3b8;
+  --text-secondary: #a8abab;
   --text-muted: #7d8085;
 
   /* Identidad */
-  --color-primary: #889af7;
-  --color-primary-hover: #a29af6;
   --hero-gradient: linear-gradient(135deg, #3a3a6a 0%, #4b2a6a 100%);
 
   /* Interactivos y Bordes */
   --border-color: #333333;
   --hover-bg: #2d2d2d;
-  --icon-color: #b0b3b8;
+  --icon-color: #b5b6b8;
 
-  /* Botones Secundarios */
-  --btn-secondary-bg: #3a3b3c;
-  --btn-secondary-text: #e4e6eb;
-  --btn-secondary-hover: #4e4f50;
-  --btn-secondary-border: transparent;
+  /* PRIMARY */
+  --color-primary: #3d7eff;
+  --color-primary-hover: #6a9bff;
+
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: var(--color-primary);
+
+  /* SECONDARY */
+  --color-secondary: #e7e7e7;
+  --color-secondary-hover: #9f9e9d;
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-secondary);
+  --btn-secondary-border: var(--color-secondary);
+
+  --btn-secondary-hover-bg: var(--color-secondary);
+  --btn-secondary-hover-text: #121212;
 }
 
 /* Reset */
@@ -89,7 +113,7 @@ body {
   min-height: calc(100vh - var(--nav-height));
 }
 
-/* Botones optimizados */
+/* Botones */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -102,17 +126,19 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 44px;
+  text-decoration: none;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--text-primary);
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-bg);
 }
 
 .btn-secondary {
   background-color: var(--btn-secondary-bg);
   color: var(--btn-secondary-text);
-  border: 1px solid var(--btn-secondary-border);
+  border: 2px solid var(--btn-secondary-border);
 }
 
 .btn-with-icon {
@@ -125,7 +151,7 @@ body {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.139);
   margin-bottom: 16px;
 }
 
@@ -165,23 +191,25 @@ body {
 
 /* Estilos Desktop */
 
-@media (min-width: 1024px) {
+@media only screen and (min-width: 1200px) {
   .container {
     max-width: 1200px;
   }
 
   .btn:hover {
     transform: translateY(-2px);
-    filter: brightness(1.1);
+    filter: brightness(1.05);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-primary-hover);
+    background-color: rgba(37, 59, 105, 0.859);
     color: white;
+    border: 2px solid white;
   }
 
   .btn-secondary:hover {
-    background-color: var(--btn-secondary-hover);
+    background-color: #523b68d3;
     color: white;
+    border: 2px solid white;
   }
 }
