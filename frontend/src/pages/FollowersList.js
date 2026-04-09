@@ -35,8 +35,8 @@ const FollowersList = () => {
 
     setFollowers(filtered);
 
-    console.log("followersIds:", followersIds);
-    console.log("filtered:", filtered);
+    // console.log("followersIds:", followersIds);
+    // console.log("filtered:", filtered);
   }, []);
 
   return (
@@ -49,9 +49,13 @@ const FollowersList = () => {
         <p className="text-secondary">Gente que te sigue</p>
       </div>
 
-      <div className="users-grid">
-        {followers.length > 0 ? (
-          followers.map((user) => (
+      {followers.length === 0 ? (
+        <div className="empty-state">
+          <p>Aún no tienes seguidores.</p>
+        </div>
+      ) : (
+        <div className="users-grid">
+          {followers.map((user) => (
             <div key={user.id} className="user-card card">
               <div className="user-info">
                 {/* mockUsers no tiene avatar cargado */}
@@ -69,13 +73,9 @@ const FollowersList = () => {
               </div>
               <FollowButton userId={user.id} />
             </div>
-          ))
-        ) : (
-          <div className="empty-state card">
-            <p>Aún no tienes seguidores.</p>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

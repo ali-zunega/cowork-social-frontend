@@ -1,30 +1,37 @@
-import React from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import NotificationDropdown from "./NotificationDropdown";
 import "./Navbar.css";
 
-/**
- * Componente de barra de navegación
- * TODO: FE-05 - Mejorar responsive con menú hamburguesa en mobile
- */
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <nav className="navbar">
       <div className="container navbar-content">
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" onClick={closeMenu}>
           <h2>CoWork Social</h2>
         </Link>
-        {/* Contenedor de elementos de accion */}
-        <div className="navbar-actions">
-          {/* Toggle de modo */}
-          <div className="theme-switch-wrapper">
-            <p className="icon nav-icon ">
-              {theme === "light" ? <FiSun /> : <FiMoon />}
-            </p>
 
+        <div className="navbar-actions">
+          {/* BOTÓN SOLO ICONO (Visible en mobile por CSS) */}
+          <button
+            className="theme-icon-button mobile-only"
+            onClick={toggleTheme}
+          >
+            {theme === "light" ? <FiSun /> : <FiMoon />}
+          </button>
+
+          {/* TOGGLE COMPLETO (Visible en desktop por CSS) */}
+          <div className="theme-switch-wrapper desktop-only">
+            <span className="nav-icon">
+              {theme === "light" ? <FiSun /> : <FiMoon />}
+            </span>
             <label className="theme-switch">
               <input
                 type="checkbox"
@@ -35,22 +42,39 @@ const Navbar = () => {
               <div className="slider round"></div>
             </label>
           </div>
-          {/* Componente de Notificaciones */}
+
           <NotificationDropdown />
+
+          {/* BOTÓN HAMBURGUESA */}
+          <button
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <FiX /> : <FiMenu />}
+          </button>
         </div>
 
-        <ul className="navbar-menu">
+        {/* MENÚ DE NAVEGACIÓN */}
+        <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <Link to="/search">Buscar</Link>
+            <Link to="/search" onClick={closeMenu}>
+              Buscar
+            </Link>
           </li>
           <li>
-            <Link to="/feed">Feed</Link>
+            <Link to="/feed" onClick={closeMenu}>
+              Feed
+            </Link>
           </li>
           <li>
-            <Link to="/profile/me">Perfil</Link>
+            <Link to="/profile/me" onClick={closeMenu}>
+              Perfil
+            </Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" onClick={closeMenu}>
+              Login
+            </Link>
           </li>
         </ul>
       </div>
