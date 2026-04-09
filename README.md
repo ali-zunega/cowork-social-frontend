@@ -74,7 +74,7 @@ sobre la cual se implementan las tareas del roadmap.
 - [x] FE-05: Interacciones en Post (Like & Comentario)
 - [x] FE-06: Centro de Notificaciones
 - [x] FE-07: Sistema Seguir/Dejar de seguir Usuario
-- [ ] FE-08: Responsive Design y Mobile Optimization
+- [x] FE-08: Responsive Design y Mobile Optimization
 - [ ] FE-09: Página de Configuración de Usuario
 
 ---
