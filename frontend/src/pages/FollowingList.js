@@ -35,9 +35,16 @@ const FollowingList = () => {
         <p className="text-secondary">Gente a la que sigues</p>
       </div>
 
-      <div className="users-grid">
-        {followingUsers.length > 0 ? (
-          followingUsers.map((user) => (
+      {followingUsers.length === 0 ? (
+        <div className="empty-state">
+          <p>Aún no estas siguiendo a nadie.</p>
+          <Link to="/search" className="btn btn-primary">
+            Encuentra personas para seguir
+          </Link>
+        </div>
+      ) : (
+        <div className="users-grid">
+          {followingUsers.map((user) => (
             <div key={user.id} className="user-card card">
               <div className="user-info">
                 <div className="user-avatar-small">{user.name.charAt(0)}</div>
@@ -54,16 +61,9 @@ const FollowingList = () => {
               </div>
               <FollowButton userId={user.id} onFollowChange={loadFollowing} />
             </div>
-          ))
-        ) : (
-          <div className="empty-state card">
-            <p>Aún no estas siguiendo a nadie.</p>
-            <Link to="/search" className="btn btn-primary">
-              Encuentra personas para seguir
-            </Link>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

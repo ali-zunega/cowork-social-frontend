@@ -1,7 +1,8 @@
 /*  Variables de Raíz  */
 :root {
   /* Fondo y Superficies */
-  --bg-body: #f7f8fa;
+  --bg-body: #f9fafb;
+  --background-primary: #ffffff;
   --card-bg: #ffffff;
   --section-bg: #ffffff;
   --cta-bg: #f0f2f5;
@@ -39,16 +40,23 @@
   --btn-secondary-hover-bg: var(--color-secondary);
   --btn-secondary-hover-text: #ffffff;
 
+  /* MODAL */
+  --modal-bg: #ffffff;
+  --modal-border: rgba(0, 0, 0, 0.08);
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
 
 }
 
 /* Modo Dark */
 [data-theme="dark"] {
-  --bg-body: #121212;
+  --bg-body: #12121a;
+  --background-primary: #181825;
   --card-bg: #1e1e1e;
   --section-bg: #181818;
   --cta-bg: #242526;
-  --overlay-bg: rgba(0, 0, 0, 0.7);
+
 
   /* Textos */
   --text-primary: #e4e6eb;
@@ -81,6 +89,12 @@
 
   --btn-secondary-hover-bg: var(--color-secondary);
   --btn-secondary-hover-text: #121212;
+
+  /* MODAL */
+  --modal-bg: #1e1e2f;
+  --modal-border: rgba(255, 255, 255, 0.08);
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
 }
 
 /* Reset */
@@ -148,7 +162,7 @@ body {
 }
 
 .card {
-  background: var(--card-bg);
+  background: var(--background-primary);
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.139);

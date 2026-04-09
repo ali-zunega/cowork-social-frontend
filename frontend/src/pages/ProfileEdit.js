@@ -82,12 +82,12 @@ const ProfileEdit = () => {
 
     setTimeout(() => {
       navigate("/profile/me");
-    }, 2000);
+    }, 3000);
   };
 
   return (
     <div className="container-profile">
-      <form onSubmit={handleSubmit} className="profile-form card">
+      <form onSubmit={handleSubmit} className="profile-form">
         <h2>Editar perfil</h2>
         {success && (
           <div className="form-success-overlay">
@@ -99,7 +99,7 @@ const ProfileEdit = () => {
               <p>Tu perfil se ha actualizado correctamente.</p>
               <button
                 className="btn btn-primary"
-                onClick={() => setSuccess(false)} // O usar un navigate("/profile/me")
+                onClick={() => navigate("/profile/me")}
                 style={{ width: "100%" }}
               >
                 Entendido
@@ -135,6 +135,7 @@ const ProfileEdit = () => {
             value={formData.bio}
             onChange={handleChange}
             maxLength={200}
+            rows={6}
           />
           <span
             className={`char-count ${formData.bio.length > 180 ? "limit" : ""}`}

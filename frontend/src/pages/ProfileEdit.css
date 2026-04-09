@@ -11,8 +11,8 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: var(--card-bg);
+    padding: 40px 20px;
+    background-color: var(--cta-bg);
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -30,7 +30,6 @@
     font-weight: 600;
     color: var(--text-secondary);
     margin-left: 4px;
-
 }
 
 .profile-form input,
@@ -45,17 +44,11 @@
 }
 
 
-[data-theme="dark"] .profile-form input,
-[data-theme="dark"] .profile-form textarea {
-    border-color: #3a3b3c;
-    background: #18191a;
-}
-
 .profile-form input:focus,
 .profile-form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-    background: var(--card-bg);
+    background: var(--background-primary);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
@@ -82,7 +75,7 @@
     backdrop-filter: blur(4px);
 }
 
-/* Caja del mensaje */
+/* Caja del mensaje exito */
 .form-success {
     background-color: var(--card-bg);
     padding: 32px 24px;
@@ -114,12 +107,12 @@
     color: #2e7d32;
 }
 
+
 .success-icon-wrapper {
     margin-bottom: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Opcional: un fondo circular muy suave */
     background-color: rgba(76, 175, 80, 0.1);
     width: 80px;
     height: 80px;
@@ -127,6 +120,7 @@
     margin: 0 auto 16px;
 }
 
+/* preview de la imagen */
 div.avatar-preview img {
     display: flex;
     width: 30%;
@@ -153,11 +147,11 @@ div.avatar-preview img {
 /* Estilos Desktop */
 @media (min-width: 1024px) {
     .container-profile {
-        padding: 40px 20px;
+        padding: 5px;
     }
 
     .profile-form {
-        padding: 30px;
+        padding: 20px 30px;
     }
 
     .form-actions {
