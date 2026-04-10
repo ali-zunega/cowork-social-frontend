@@ -19,18 +19,20 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 
 }
 
 .navbar-brand {
   text-decoration: none;
   color: #1877f2;
+  min-width: 161px;
+
 }
 
 .navbar-brand h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 /* --- CLASES DE VISIBILIDAD --- */
@@ -41,6 +43,7 @@
 .desktop-only {
   display: none !important;
 }
+
 
 
 
@@ -71,7 +74,8 @@
 
 /* --- BOTONES Y ICONOS --- */
 .menu-toggle,
-.theme-icon-button {
+.theme-icon-button,
+.settings-icon {
   background: none;
   border: none;
   color: var(--text-color);
@@ -81,6 +85,21 @@
   align-items: center;
   padding: 0;
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.settings-icon:hover {
+  animation: spin 3s linear infinite;
+}
+
 
 
 /* --- ESTILOS TOGGLES --- */
@@ -147,6 +166,10 @@
 
 /* --- DESKTOP REFACTOR (1024px+) --- */
 @media (min-width: 1024px) {
+  .navbar-brand h2 {
+    font-size: 24px;
+  }
+
   .mobile-only {
     display: none;
   }
@@ -166,6 +189,10 @@
     box-shadow: none;
     padding: 0;
     background: transparent;
+    gap: 30px;
+  }
+
+  .navbar-actions {
     gap: 30px;
   }
 }

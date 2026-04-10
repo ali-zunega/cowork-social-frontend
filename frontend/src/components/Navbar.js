@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FiSun, FiMoon, FiMenu, FiX, FiSettings } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import NotificationDropdown from "./NotificationDropdown";
 import "./Navbar.css";
@@ -8,7 +8,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -44,6 +44,11 @@ const Navbar = () => {
           </div>
 
           <NotificationDropdown />
+
+          <FiSettings
+            className="settings-icon"
+            onClick={() => navigate("/settings")}
+          />
 
           {/* BOTÓN HAMBURGUESA */}
           <button

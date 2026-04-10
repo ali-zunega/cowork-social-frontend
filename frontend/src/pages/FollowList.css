@@ -2,10 +2,8 @@
 .follow-list-page {
     padding: 16px;
     padding-top: 60px;
-
     display: flex;
     flex-direction: column;
-
 }
 
 /* ========== HEADER ========== */
@@ -110,6 +108,7 @@
     .follow-list-page {
         padding: 20px;
         padding-top: 70px;
+
     }
 
     .users-grid {
@@ -141,8 +140,11 @@
 /* ========== LARGE (>= 1200px) ========== */
 @media (min-width: 1200px) {
     .users-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
     }
 
 }

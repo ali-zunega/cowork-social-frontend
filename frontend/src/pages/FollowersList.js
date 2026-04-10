@@ -15,11 +15,15 @@ const FollowersList = () => {
     let followersIds = [];
 
     if (!stored) {
-      // Generamos la lista aleatoria solo una vez al cargar el componente
-      const random = [...mockUsers]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3)
-        .map((u) => u.id);
+      // Si no hay seguidores guardados, generamos un array de IDs aleatorios
+      const random = [];
+      while (random.length < 10) {
+        const randomId =
+          mockUsers[Math.floor(Math.random() * mockUsers.length)].id;
+        if (!random.includes(randomId)) {
+          random.push(randomId);
+        }
+      }
 
       localStorage.setItem("followers", JSON.stringify(random));
       followersIds = random;
