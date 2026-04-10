@@ -1,0 +1,374 @@
+/* Mensaje de confirmacion */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-bg);
+    border-bottom: 3px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 999;
+}
+
+.confirm-box {
+    background: var(--modal-bg);
+    color: var(--text-primary);
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    border: var(--modal-border);
+    box-shadow: var(--modal-shadow);
+
+    text-align: center;
+}
+
+.confirm-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.confirm-actions button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--text-muted);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.confirm-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.warning-icon {
+    color: #E5BE01;
+}
+
+.logout-icon {
+    color: #dc3545;
+}
+
+
+/* Modal de Éxito */
+.success-toast {
+    position: fixed;
+    top: 100px;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2e7d32;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: slideUp 0.4s ease forwards;
+}
+
+.success-toast.danger {
+    background-color: #ffe5e5;
+    color: #b00020;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.settings-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.settings-hero {
+    margin-bottom: 30px;
+}
+
+/* ESTILO MAESTRO DE INPUTS (Para que no se rompan más) */
+.settings-layout input[type="text"],
+.settings-layout input[type="email"],
+.settings-layout input[type="password"],
+.settings-layout select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.setting-item label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.setting-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Password Fields */
+/* Contenedor de los 3 inputs */
+.password-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Mobile: una columna */
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+/* Contenedor del error y el botón */
+.password-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Mensaje de Error */
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 5px 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.password-fields {
+    background-color: var(--cta-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.password-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+/* Mobile First Layout */
+.settings-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 3px 0;
+}
+
+.checkbox-item input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+}
+
+.danger-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.danger-icon {
+    color: #dc3545;
+}
+
+.btn-danger-minimal {
+    background: transparent;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-danger-minimal:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.settings-footer {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.account-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.settings-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+/* danger zone actions */
+.btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.btn.loading::after {
+    content: "...";
+    margin-left: 5px;
+    animation: dots 1s infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: ".";
+    }
+
+    50% {
+        content: "..";
+    }
+
+    100% {
+        content: "...";
+    }
+}
+
+
+/* DESKTOP - Aquí está la magia de la alineación */
+@media (min-width: 768px) {
+    .account-info-block .btn-sm {
+        align-self: flex-start;
+    }
+
+    .settings-layout {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "user user user"
+            "notif priv lang"
+            "danger danger danger";
+        gap: 24px;
+        align-items: stretch;
+    }
+
+    .section-user {
+        grid-area: user;
+    }
+
+    .section-notifications {
+        grid-area: notif;
+    }
+
+    .section-privacy {
+        grid-area: priv;
+    }
+
+    .section-language {
+        grid-area: lang;
+    }
+
+    .section-danger {
+        grid-area: danger;
+    }
+
+
+    .section-notifications,
+    .section-privacy,
+    .section-language {
+        max-height: 200px;
+    }
+
+    .user-fields-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .danger-actions {
+        flex-direction: row;
+    }
+
+    .password-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columnas solo para inputs */
+    }
+
+    .password-actions {
+        /* El botón en desktop puede volver a ser fit-content si querés */
+        align-items: flex-start;
+    }
+
+    .password-inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        align-items: start;
+    }
+
+    .password-inputs .btn-primary {
+        grid-column: span 3;
+        margin-top: 10px;
+    }
+
+    .error-message {
+        grid-column: span 3;
+    }
+
+    .preferences {
+        background-color: var(--cta-bg);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 8px;
+        border: 1px solid var(--border-color);
+    }
+
+
+}

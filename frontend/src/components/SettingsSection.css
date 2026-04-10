@@ -1,0 +1,47 @@
+.settings-section {
+    background-color: var(--background-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--hover-bg);
+    padding-bottom: 8px;
+}
+
+.settings-icon {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+}
+
+.settings-title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    color: var(--text-secondary);
+}
+
+/* Estilo para desktop */
+@media (min-width: 768px) {
+    .settings-section {
+        padding: 18px;
+        margin-bottom: 0;
+    }
+
+}
